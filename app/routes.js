@@ -31,6 +31,11 @@ var Nerd = require('./models/nerd');
         app.get('/', function(req, res) {
             res.sendfile('./public/views/index.html'); // load our public/index.html file
         });
+
+        app.get('/gotcha', function(req, res) {
+            res.sendfile('./app/views/folly.html'); // load our public/index.html file
+        });
+
         app.get('*', function(req, res) {
             res.sendfile('./public/views/error404.html'); // load our error404.html file
         });
