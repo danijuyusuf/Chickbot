@@ -20,7 +20,9 @@ var port = process.env.PORT || 5;
 
 // get all data/stuff of the body (POST) parameters
 // parse application/json 
-app.use(bodyParser.json()); 
+app.use(bodyParser.json());
+
+app.set('view engine', 'jade'); 
 
 // parse application/vnd.api+json as json
 app.use(bodyParser.json({ type: 'application/vnd.api+json' })); 
