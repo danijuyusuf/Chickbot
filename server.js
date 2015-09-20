@@ -2,6 +2,7 @@
 
 // modules =================================================
 var express        = require('express');
+var favicon        = require('express-favicon');
 var app            = express();
 var bodyParser     = require('body-parser');
 var methodOverride = require('method-override');
@@ -10,6 +11,9 @@ var methodOverride = require('method-override');
     
 // config files
 var db = require('./config/db');
+
+// use favicon
+app.use(favicon(__dirname + '/public/napay.png'));
 
 // set our port
 var port = process.env.PORT || 5; 
@@ -37,7 +41,7 @@ app.use(methodOverride('X-HTTP-Method-Override'));
 app.set('views', __dirname + '/app/views');
 
 // set the static files location /public/img will be /img for users
-app.use(express.static(__dirname + '/public')); 
+app.use(express.static(__dirname + '/public'));
 
 // routes ==================================================
 require('./app/routes')(app); // configure our routes
