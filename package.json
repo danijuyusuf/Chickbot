@@ -1,13 +1,15 @@
 {
-  "name": "starter-node-angular",
+  "name": "chickbot",
   "main": "server.js",
+  "description" : "An app for poultry management",
   "dependencies": {
     "body-parser": "~1.4.2",
     "express": "~4.5.1",
     "express-favicon": "^1.0.1",
     "gulp": "latest",
-    "jade": "latest",
+    "ejs": "latest",
     "method-override": "~2.0.2",
-    "mongoose": "~3.8.0"
+    "mongoose": "~3.8.0",
+    "connect": "2.7.x"
   }
 }

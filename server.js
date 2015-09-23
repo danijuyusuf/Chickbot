@@ -6,6 +6,8 @@ var favicon        = require('express-favicon');
 var app            = express();
 var bodyParser     = require('body-parser');
 var methodOverride = require('method-override');
+var path           = require('path');
+var mongoose       = require('mongoose');
 
 // configuration ===========================================
     
@@ -20,13 +22,13 @@ var port = process.env.PORT || 5;
 
 // connect to our mongoDB database 
 // (uncomment after you enter in your own credentials in config/db.js)
-//mongoose.connect(db.url); 
+mongoose.connect(db.url); 
 
 // get all data/stuff of the body (POST) parameters
 // parse application/json 
 app.use(bodyParser.json());
 
-app.set('view engine', 'jade'); 
+app.set('view engine', 'ejs'); 
 
 // parse application/vnd.api+json as json
 app.use(bodyParser.json({ type: 'application/vnd.api+json' })); 
@@ -38,7 +40,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride('X-HTTP-Method-Override')); 
 
 //set location of views
-app.set('views', __dirname + '/app/views');
+app.set('views', path.join(__dirname, '/app/views'));
 
 // set the static files location /public/img will be /img for users
 app.use(express.static(__dirname + '/public'));
