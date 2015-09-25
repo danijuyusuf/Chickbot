@@ -26,12 +26,24 @@ var User = require('./models/user');
         // });
 
         // route to handle creating goes here (app.post)
+
+        app.post('/user/new', function(req, res) {
+            var firstname = req.body.firstname;
+            var lastname = req.body.lastname;
+            var email = req.body.email;
+            var password = req.body.password;
+            var position = req.body.position;
+
+            res.redirect('/dashboard/admin')
+            //console.log(req.files);
+            //res.json(req.files);
+            });
         // route to handle delete goes here (app.delete)
 
         // frontend routes =========================================================
         // route to handle all angular requests
         app.get('/', function(req, res) {
-            res.sendfile('./public/views/index.html'); // load our public/index.html file
+            res.render('index'); // load our index.ejs
         });
 
         app.get('/folly', function(req, res) {
@@ -46,16 +58,12 @@ var User = require('./models/user');
             res.render('new-user');
         });
 
-        app.get('/login', function(req, res) {
-            res.render('login');
-        });
-
         app.get('/dashboard/vet', function(req, res) {
             res.render('dashboard-vet');
         });
 
         app.get('/dashboard/admin', function(req, res) {
-            user = new User({firstname: "Yusuf", lastname: "Daniju"});
+            user = new User({firstname: "Sumayyah", lastname: 'Yusuf'});
             res.render('dashboard-admin');
         });
 

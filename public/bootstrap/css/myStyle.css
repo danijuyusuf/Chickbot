@@ -1,0 +1,106 @@
+
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #f5f5f5;
+}
+
+
+#ago {
+	font-family: 'Libre Baskerville', serif;
+	color: green;
+  font-size: 40px;
+}
+
+.navbar-header 
+
+.ago {
+	text-transform: uppercase;
+	font-family: 'Libre Baskerville', serif;
+	font-size: 40px;
+	color: red;
+
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.index {
+	text-align: center;
+}
+
+.down {
+	margin-top: 50px;
+  font-family: candara;
+}
+
+.double-down {
+	margin-top: 100px
+}
+
+.signin-text {
+  text-align: center;
+  font-family: candara;
+}
+
+.dashboard {
+  font-family: candara;
+
+}
+.logout-button {
+  position: absolute;
+  top: 90px;
+  left: 1125px;
+  font-style: candara;
+  font-size: 14px;
+}
+
+.welcome {
+  font-family: 'Libre Baskerville', serif;
+}
+
+.candara {
+  font-family: candara;
+  font-size: 16px;
+  
+}
+
+.navbar-right {
+  font-family: 'Libre Baskerville', serif;
+}
+
+table > tr {
+  height: 30px;
+}
