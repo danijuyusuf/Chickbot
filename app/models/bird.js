@@ -2,6 +2,7 @@
 // grab the mongoose module
 var mongoose = require('mongoose');
 
+//Create bird schema
 var birdSchema = new mongoose.Schema({
 	stockInDate: Date,
 	breed: String,
@@ -9,4 +10,6 @@ var birdSchema = new mongoose.Schema({
 	createdOn: Date
 });
 
-module.exports = mongoose.model('Bird', birdSchema);
+//Export schema for availabilty at "global scope"
+var Bird = mongoose.model('Bird', birdSchema);
+module.exports = Bird;

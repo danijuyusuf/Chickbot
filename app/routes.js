@@ -1,6 +1,6 @@
 // app/routes.js
 
-// grab the nerd model we just created
+// grab the models we  created
 var Bird = require('./models/bird');
 var User = require('./models/user');
 
@@ -11,32 +11,24 @@ var User = require('./models/user');
         // handle things like api calls
         // authentication routes
 
-        // sample api route
-        // app.get('/api/nerds', function(req, res) {
-        //     // use mongoose to get all nerds in the database
-        //     Nerd.find(function(err, nerds) {
-
-        //         // if there is an error retrieving, send the error. 
-        //                         // nothing after res.send(err) will execute
-        //         if (err)
-        //             res.send(err);
-
-        //         res.json(nerds); // return all nerds in JSON format
-        //     });
-        // });
-
         // route to handle creating goes here (app.post)
 
         app.post('/user/new', function(req, res) {
-            var firstname = req.body.firstname;
-            var lastname = req.body.lastname;
-            var email = req.body.email;
-            var password = req.body.password;
-            var position = req.body.position;
-
+            User.create({
+                firstname: req.body.firstname,
+                lastname: req.body.lastname,
+                email: req.body.email,
+                password: req.body.password,
+                position: req.body.position,
+                modifiedOn : Date.now(),
+                lastLogin : Date.now()
+                }, function( err, user ){
+                if(!err){
+                console.log("User created and saved for: " + user.firstname + " " + user.lastname);
+                }
+            });
             res.redirect('/dashboard/admin')
-            //console.log(req.files);
-            //res.json(req.files);
+            
             });
         // route to handle delete goes here (app.delete)
 
@@ -55,7 +47,7 @@ var User = require('./models/user');
         });
 
         app.get('/user/new', function(req, res) {
-            res.render('new-user');
+            res.render('user-new');
         });
 
         app.get('/dashboard/vet', function(req, res) {
@@ -63,7 +55,7 @@ var User = require('./models/user');
         });
 
         app.get('/dashboard/admin', function(req, res) {
-            user = new User({firstname: "Sumayyah", lastname: 'Yusuf'});
+            //user = new User({firstname: "Sumayyah", lastname: 'Yusuf'});
             res.render('dashboard-admin');
         });
 

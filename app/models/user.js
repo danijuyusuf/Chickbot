@@ -6,11 +6,11 @@ var userSchema = new mongoose.Schema({
 	firstname: String,
 	lastname: String,
 	email: {type: String, unique: true},
-	position: String,
+	position: Number,
 	password: String,
 	createdOn: {type: Date, default: Date.now},
 	modifiedOn: Date,
 	lastLogin: Date
 });
-
-module.exports = mongoose.model('User', userSchema);
+var User = mongoose.model('User', userSchema);
+module.exports = User;
