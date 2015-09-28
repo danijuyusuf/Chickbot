@@ -10,6 +10,7 @@
     "ejs": "latest",
     "method-override": "~2.0.2",
     "mongoose": "~3.8.0",
-    "connect": "2.7.x"
+    "connect": "2.7.x",
+    "express-session": "1.7.x"
   }
 }

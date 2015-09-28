@@ -8,11 +8,18 @@ var bodyParser     = require('body-parser');
 var methodOverride = require('method-override');
 var path           = require('path');
 var mongoose       = require('mongoose');
+var session 	   = require('express-session');
 
 // configuration ===========================================
     
 // config files
 var db = require('./config/db');
+
+//enable sessions
+app.use(session({secret: 'kit kart',
+resave: false,
+saveUninitialized: true 
+}));
 
 //further db config
 
@@ -33,7 +40,7 @@ process.on('SIGINT', function() {
 });
 
 // use favicon
-app.use(favicon(__dirname + '/public/napay.png'));
+app.use(favicon(__dirname + '/public/images/napay.png'));
 
 // set our port
 var port = process.env.PORT || 5; 
@@ -62,6 +69,7 @@ app.set('views', path.join(__dirname, '/app/views'));
 
 // set the static files location /public/img will be /img for users
 app.use(express.static(__dirname + '/public'));
+app.use(express.static(path.join(__dirname, '/bower_components')));
 
 // routes ==================================================
 require('./app/routes')(app); // configure our routes

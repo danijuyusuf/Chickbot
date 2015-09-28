@@ -1,8 +1,10 @@
 // app/routes.js
 
+
 // grab the models we  created
 var Bird = require('./models/bird');
 var User = require('./models/user');
+var sess;
 
     module.exports = function(app) {
         
@@ -32,13 +34,17 @@ var User = require('./models/user');
                         }
                     } else {
                         //Success
+                        sess = req.session;
+                        sess.email = req.body.email;
                         console.log("User created and saved for: " + user.firstname + " " + user.lastname);
-                        res.redirect('/dashboard/admin')
+                        res.redirect('/dashboard/admin');
                     }
+                });            
             });
-            
-            
-            });
+        app.post('/login', function(req, res) {
+
+            res.render('login');
+        });
         // route to handle delete goes here (app.delete)
 
         // frontend routes =========================================================
@@ -63,7 +69,7 @@ var User = require('./models/user');
             res.render('dashboard-vet');
         });
 
-        app.get('/dashboard/admin', function(req, res) {
+        app.get('/dashboard/admin/:id', function(req, res) {
             //user = new User({firstname: "Sumayyah", lastname: 'Yusuf'});
             res.render('dashboard-admin');
         });
