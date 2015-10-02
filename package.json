@@ -1,16 +1,38 @@
 {
   "name": "chickbot",
   "main": "server.js",
-  "description" : "An app for poultry management",
+  "description": "An app for poultry management",
   "dependencies": {
     "body-parser": "~1.4.2",
     "express": "~4.5.1",
     "express-favicon": "^1.0.1",
-    "gulp": "latest",
-    "ejs": "latest",
+    "gulp": "~3.9.0",
+    "ejs": "~2.3.4",
     "method-override": "~2.0.2",
     "mongoose": "~3.8.0",
-    "connect": "2.7.x",
-    "express-session": "1.7.x"
-  }
+    "connect": "~3.4.0",
+    "express-session": "~1.11.3",
+    "cookie-parser": "~1.4.0",
+    "passport": "~0.3.0",
+    "passport-local": "*",
+    "passport-local-mongoose": "^1.0.0",
+    "connect-flash": "*",
+    "bcrypt-nodejs": "*"
+    },
+  
+  "scripts": {
+    "start": "node server.js"
+  },
+  "version": "1.0.0",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danijuyusuf/Chickbot.git"
+  },
+  "author": "Yusuf Daniju",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danijuyusuf/Chickbot/issues"
+  },
+  "homepage": "https://github.com/danijuyusuf/Chickbot#readme"
 }

@@ -9,17 +9,49 @@ var methodOverride = require('method-override');
 var path           = require('path');
 var mongoose       = require('mongoose');
 var session 	   = require('express-session');
+var cookieParser   = require('cookie-parser');
+var passport       = require('passport');
+var LocalStrategy  = require('passport-local').Strategy;
+var User           = require('./app/models/user');
+
 
 // configuration ===========================================
     
 // config files
-var db = require('./config/db');
+var db = require('./config/db');// get all data/stuff of the body (POST) parameters
+// parse application/json 
+app.use(bodyParser.json());
+
+// parse application/vnd.api+json as json
+app.use(bodyParser.json({ type: 'application/vnd.api+json' })); 
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// override with the X-HTTP-Method-Override header in the request. simulate DELETE/PUT
+app.use(methodOverride('X-HTTP-Method-Override')); 
+
+//parse cookies
+app.use(cookieParser());
 
 //enable sessions
-app.use(session({secret: 'kit kart',
-resave: false,
-saveUninitialized: true 
+app.use(session({
+	secret: 'kit kart',
+	resave: false,
+	saveUninitialized: true 
 }));
+
+
+//use user authentication
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+
+
 
 //further db config
 
@@ -54,15 +86,6 @@ mongoose.connect(db.url);
 app.use(bodyParser.json());
 
 app.set('view engine', 'ejs'); 
-
-// parse application/vnd.api+json as json
-app.use(bodyParser.json({ type: 'application/vnd.api+json' })); 
-
-// parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: true })); 
-
-// override with the X-HTTP-Method-Override header in the request. simulate DELETE/PUT
-app.use(methodOverride('X-HTTP-Method-Override')); 
 
 //set location of views
 app.set('views', path.join(__dirname, '/app/views'));
